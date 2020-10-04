@@ -12,12 +12,18 @@ class Storage:
         else:
             return None
 
-    def remove(self):
-        pass
+    def remove(self, key):
+        if key not in self.data:
+            return
+        self.data.pop(key)
 
     def set(self, key, value):
         if key in self.data:
             self.data[key] = value
     
-    def add(self):
-        pass
+    def add(self, key, value):
+        if key in self.data:
+            return 404 # unsuccess code
+        else:
+            self.data[key] = value
+            return 0 # success code
