@@ -17,8 +17,9 @@ class Storage:
             return
         self.data.pop(key)
 
-    def set(self):
-        pass
+    def set(self, key, value):
+        if key in self.data:
+            self.data[key] = value
     
     def add(self, key, value):
         if key in self.data:
