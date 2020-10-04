@@ -19,7 +19,23 @@ def test_add():
     assert result == 404, "The function did not return an 'unsuccess' code"
 
 def test_remove():
-    pass
+    st = Storage({'a': 1, 'b': 2})
+    key = 'b'
+    st.remove(key)
+    assert st.get(key) is None, 'Expected no key {} in storage'.format(key)
+
+    st = Storage({'a': 1, 'b': 2})
+
+    was_exception = False
+    key = 'c'
+    try:
+        st.remove(key)
+    except:
+        was_exception = True
+
+    assert was_exception == False, 'Remove of unknown key shouldnt raise exception'
+    assert st.get('a') == 1, 'Remove of unknown key shouldnt change Storage'
+    assert st.get('b') == 2, 'Remove of unknown key shouldnt change Storage'
 
 def test_set():
     pass
