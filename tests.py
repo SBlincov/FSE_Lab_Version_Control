@@ -1,7 +1,22 @@
 from storage import Storage
 
 def test_add():
-    pass
+    st = Storage({'a': 1, 'b': 2})
+    
+    # Test One
+    key = 'c'
+    value = 3
+    result = st.add(key, value)
+    assert result == 0, "The function did not return a 'success' code"
+    val = st.get(key)
+    assert val != None, "The added key does not exist in the storage"
+    assert val == value, "Value for the key {} is not eqial to expected".format(key)
+    
+    # Test Two
+    key = 'b'
+    value = 4
+    result = st.add(key, value)
+    assert result == 404, "The function did not return an 'unsuccess' code"
 
 def test_remove():
     pass
